@@ -8,7 +8,7 @@ import ReactPlayer from "react-player";
 import { ORIGINAL_IMG_BASE_URL, SMALL_IMG_BASE_URL } from "../utils/constants";
 import { formatReleaseDate } from "../utils/dateFunction";
 import WatchPageSkeleton from "../components/skeletons/WatchPageSkeleton";
-// const BASEURL = 'https://netflix-2-six.vercel.app'
+const BASEURL = 'https://flixworld.onrender.com'
 
 const WatchPage = () => {
 	const { id } = useParams();
@@ -24,7 +24,7 @@ const WatchPage = () => {
 	useEffect(() => {
 		const getTrailers = async () => {
 			try {
-				const res = await axios.get(`/api/v1/${contentType}/${id}/trailers`);
+				const res = await axios.get(BASEURL+`/api/v1/${contentType}/${id}/trailers`);
 				setTrailers(res.data.trailers);
 			} catch (error) {
 				if (error.message.includes("404")) {
@@ -39,7 +39,7 @@ const WatchPage = () => {
 	useEffect(() => {
 		const getSimilarContent = async () => {
 			try {
-				const res = await axios.get(`/api/v1/${contentType}/${id}/similar`);
+				const res = await axios.get(BASEURL+`/api/v1/${contentType}/${id}/similar`);
 				setSimilarContent(res.data.similar);
 			} catch (error) {
 				if (error.message.includes("404")) {
@@ -54,7 +54,7 @@ const WatchPage = () => {
 	useEffect(() => {
 		const getContentDetails = async () => {
 			try {
-				const res = await axios.get(`/api/v1/${contentType}/${id}/details`);
+				const res = await axios.get(BASEURL+`/api/v1/${contentType}/${id}/details`);
 				setContent(res.data.content);
 			} catch (error) {
 				if (error.message.includes("404")) {
@@ -154,7 +154,6 @@ const WatchPage = () => {
 					)}
 				</div>
 
-				{/* movie details */}
 				<div
 					className='flex flex-col md:flex-row items-center justify-between gap-20 
 				max-w-6xl mx-auto'

@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { SMALL_IMG_BASE_URL } from "../utils/constants";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-// const BASEURL = 'https://netflix-2-six.vercel.app'
+const BASEURL = 'https://flixworld.onrender.com'
 
 const MovieSlider = ({ category }) => {
 	const { contentType } = useContentStore();
@@ -19,7 +19,7 @@ const MovieSlider = ({ category }) => {
 
 	useEffect(() => {
 		const getContent = async () => {
-			const res = await axios.get(`/api/v1/${contentType}/${category}`);
+			const res = await axios.get(BASEURL+`/api/v1/${contentType}/${category}`);
 			setContent(res.data.content);
 		};
 
